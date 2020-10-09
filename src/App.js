@@ -19,6 +19,7 @@ function App() {
 
   return (
     <div className="App">
+      <Title level={1}>String Reverser</Title>
       <Input 
         placeholder="Enter string" 
         value={input}

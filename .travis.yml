@@ -1,0 +1,19 @@
+sudo: required
+
+services: docker
+
+before_install:
+    - echo "Building client image..."
+    - docker build -t $DOCKER_ID/react-frontend:latest .
+
+script:
+    - echo "Running tests..."
+    - docker run $DOCKER_ID/react-frontend:latest yarn test
+
+after_success:
+    - echo "Pushing image to Docker Hub..."
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push $DOCKER_ID/react-frontend:latest
+
+# TODO: Deploy to AWS EB
+# deploy:
