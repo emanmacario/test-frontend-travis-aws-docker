@@ -15,5 +15,14 @@ after_success:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push $DOCKER_ID/react-frontend:latest
 
-# TODO: Deploy to AWS EB
 # deploy:
+#     provider: elasticbeanstalk
+#     region: us-east-1
+#     app: string-reverser
+#     env: StringReverser-env
+#     bucket_name: elasticbeanstalk-us-east-1-784282585398
+#     bucket_path: string-reverser
+#     access_key_id: $AWS_ACCESS_KEY_ID
+#     secret_access_key: $AWS_SECRET_ACCESS_KEY
+#     on:
+#         branch: master
